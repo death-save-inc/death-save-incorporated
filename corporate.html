@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEATH SAVE :: TERMINAL</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== TOP NAV — logo is injected by Logo.js ===== -->
+<nav class="topnav">
+  <div class="ticker">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+</nav>
+
+<!-- ===== SUB TOOLBAR ===== -->
+<div class="subbar">
+  <span class="session">
+    <span class="dot">●</span>
+    <span class="hl">LOGGED IN AS GUEST_TRADER</span>
+  </span>
+  <span class="ft"><span class="hl">// terminal mode</span></span>
+  <div class="actions">
+    <button class="tbtn"><span class="hl">DEPOSIT/WITHDRAW</span></button>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ===== ACCOUNT SUMMARY ===== -->
+  <div class="panel acct">
+    <div class="phead">ACCOUNT SUMMARY <span class="meta" id="acctMeta">DAY +/-</span></div>
+    <div class="acct-grid">
+      <div class="acct-total">
+        <div class="lbl"><span class="hl">Total Account</span></div>
+        <div class="val"><span class="hl" id="totVal">€ 16.00</span></div>
+      </div>
+      <div class="alloc">
+        <div class="row">
+          <span class="k"><span class="hl">PORTFOLIO</span></span>
+          <span class="bar hl" id="allocBar">[..........]</span>
+          <span class="hl" id="portVal">€ 0.00</span>
+        </div>
+        <div class="row">
+          <span class="k"><span class="hl">EUR MM FUND</span></span>
+          <span class="bar hl">[..........]</span>
+          <span class="hl">€ 0.00</span>
+        </div>
+      </div>
+      <div class="acct-spacer"></div>
+      <div class="vline"></div>
+      <div class="acct-col">
+        <div class="lbl"><span class="hl">Day +/-</span></div>
+        <div class="big up"><span class="hl" id="dayPL">+0.00</span></div>
+      </div>
+      <div class="acct-col">
+        <div class="lbl"><span class="hl">Free Space</span></div>
+        <div class="big"><span class="hl" id="freeVal">€ 16.00</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TABS ===== -->
+  <div class="tabs">
+    <div class="tab active" data-view="market"><span class="hl">MARKET</span></div>
+    <div class="tab" data-view="portfolio"><span class="hl">PORTFOLIO</span></div>
+    <div class="tab" data-view="about"><span class="hl">ABOUT</span></div>
+    <div class="tab" data-view="reports"><span class="hl">REPORTS</span></div>
+    <div class="tab" data-view="faq"><span class="hl">FAQ</span></div>
+  </div>
+
+  <!-- ===== VIEW: MARKET ===== -->
+  <div class="view" data-view="market">
+    <div class="grid grid-2">
+
+      <!-- Left column: chart + news -->
+      <div class="col">
+        <div class="panel">
+          <div class="phead">
+            <span id="chartTitle">SPELLS 5E FOR IOS</span>
+            <span class="meta" id="dsxHead">3.99</span>
+          </div>
+          <pre class="ascii-chart" id="bigchart"></pre>
+          <div class="chartlegend">
+            <span>HI <b class="up" id="hiTag">--</b></span>
+            <span>LO <b class="down" id="loTag">--</b></span>
+            <span class="ft">// 09:00 - 13:00 CET</span>
+          </div>
+          <div class="tradebar">
+            <button class="bigbtn b" id="buyBtn"><span class="hl">▲ BUY 1</span></button>
+            <button class="bigbtn s" id="sellBtn"><span class="hl">▼ SELL 1</span></button>
+            <span class="hold ft" id="holdInfo">&gt; no position</span>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="phead">COMPETITOR INSIGHT <span class="meta">█</span></div>
+          <table class="qtable news" id="news"></table>
+        </div>
+      </div>
+
+      <!-- Right column: product list + brief -->
+      <div class="col">
+        <div class="panel">
+          <div class="phead">DEATH SAVE PRODUCTS <span class="meta">DSX ▾</span></div>
+          <table class="qtable wl" id="winlose"></table>
+        </div>
+        <div class="panel">
+          <div class="phead">PRODUCT BRIEF <span class="meta" id="briefName">SPELLS 5E FOR IOS</span></div>
+          <div class="prod-brief">
+            <p class="pb-desc" id="briefDesc"></p>
+            <p class="pb-proj ft" id="briefProj"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== VIEW: PORTFOLIO ===== -->
+  <div class="view" data-view="portfolio" hidden>
+    <div class="panel">
+      <div class="phead">PORTFOLIO <span class="meta" id="pfMeta">0 POSITIONS</span></div>
+      <table class="qtable pf" id="pfTable"></table>
+      <div class="pf-empty ft" id="pfEmpty">
+        &gt; no positions held — acquire product on the MARKET tab
+      </div>
+      <div class="pf-foot">
+        <span>CASH <b id="pfCash">€ 16.00</b></span>
+        <span>HOLDINGS <b id="pfHold">€ 0.00</b></span>
+        <span>TOTAL <b id="pfTotal">€ 16.00</b></span>
+        <span class="pf-pl">P/L <b id="pfPL">+0.00</b></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== VIEW: ABOUT ===== -->
+  <div class="view" data-view="about" hidden>
+    <div class="panel">
+      <div class="phead">MESSAGE FROM CEO <span class="meta">█</span></div>
+      <div class="ceo ceo-wide">
+        <p class="ceo-greet ft">&gt; transmission begins</p>
+        <p>DEATH SAVE INCORPORATED IS A COLLECTIVE OF DESIGNERS, ARTISTS, AND DEVELOPERS
+        FOCUSED ON THE CREATION OF TABLETOP ROLEPLAYING GAME CONTENT, AS WELL AS OTHER
+        DIGITAL MEDIA ALIGNED WITH THE COLLECTIVE'S INTERESTS AND CREATIVE DIRECTION.
+        THROUGH THE INTEGRATION OF MULTIPLE DISCIPLINES, THE COLLECTIVE PRODUCES AND
+        DISTRIBUTES ORIGINAL WORK TO THE WIDER TABLETOP GAMING COMMUNITY. THE
+        ORGANIZATION DOES NOT CONDONE HYPERCAPITALISTIC EXPLOITATION.</p>
+        <p>CHAIRMEN OF THE BOARD
+
+JOEY SCHOUTEN, EXECUTIVE CHAIRMAN OF STRATEGIC OPERATIONS.
+JELLE HOOGENBERG, GLOBAL DIRECTOR OF CREATIVE INFRASTRUCTURE.
+BAS DE GEUS, CHIEF EXECUTIVE OFFICER OF INTERNAL AFFAIRS.
+JEFFREY DUFOUR, SENIOR VICE PRESIDENT OF CORPORATE DEVELOPMENT.
+MARTIJN VERLEG, EXECUTIVE DIRECTOR OF INTERACTIVE MEDIA SYSTEMS.
+MARLON SIJNESAEL, CHIEF COMPLIANCE AND CULTURAL OVERSIGHT OFFICER.
+HARMEN VAN BALEN, PRINCIPAL ADMINISTRATOR OF DIGITAL INITIATIVES.
+JOOST DE NOOY, GROUP PRESIDENT OF OPERATIONAL FRAMEWORKS.
+MARK DIBBETS, CHIEF FINANCIAL STRATEGY EXECUTIVE.
+SANDER VROEGE, EXECUTIVE SUPERVISOR OF EXPANSION MANAGEMENT.
+EMANUEL ENGELEN, DIRECTOR OF ADVANCED CONTENT ACQUISITIONS.
+EMELIE OLOFSSON, SENIOR EXECUTIVE OF TRANSMEDIA RELATIONS.
+JUDITH VAN LEERSUM, CHIEF ADMINISTRATIVE GOVERNANCE OFFICER.
+MARC LE KLUSE, EXECUTIVE CONSULTANT OF BRAND ARCHITECTURE.
+SIEGER VAN BREUGEL, HEAD OF CORPORATE SYNTHESIS AND LOGISTICS.
+SYTZE VAN DER WOLK, LEAD EXECUTIVE OF STRATEGIC IMPLEMENTATION.
+JEROEN RIJNART, PRINCIPAL DIRECTOR OF CREATIVE COMMERCE.
+MARIJKE HEIJDRA, CHIEF COORDINATOR OF CULTURAL ASSETS AND DISTRIBUTION.
+CAMIE ROOS, EXECUTIVE LIAISON OF INTERDEPARTMENTAL AFFAIRS.
+ZOË KONING, SENIOR DIRECTOR OF CREATIVE RESOURCE ALLOCATION.</p>
+        <p class="ceo-sig dm">—— DEATH SAVE INCORPORATED</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== VIEW: REPORTS ===== -->
+  <div class="view" data-view="reports" hidden>
+    <div class="panel">
+      <div class="phead">REPORTS</div>
+      <div class="stub"><p class="ft">&gt; redacted</p></div>
+    </div>
+  </div>
+
+  <!-- ===== VIEW: FAQ ===== -->
+  <div class="view" data-view="faq" hidden>
+    <div class="panel">
+      <div class="phead">FAQ</div>
+      <div class="stub"><p class="ft">&gt; no entries indexed</p></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== STATUS LINE (sticky footer) ===== -->
+<div class="statusline">
+  <span><span class="sp">conn://</span>deathsave.market.feed</span>
+  <span class="sp">|</span>
+  <span>SESSION <span class="gr">0x4F2A91</span></span>
+  <span class="sp">|</span>
+  <span>LATENCY <span class="gr">12ms</span></span>
+  <div class="right">
+    <span class="live">█ LIVE</span>
+    <span id="statClock">--:--:--</span>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
